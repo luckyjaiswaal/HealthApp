@@ -5,7 +5,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
 android:padding="30dp"
-tools:context=".register">
+tools:context=".SignUp">
 
 <com.google.android.material.textfield.TextInputLayout
     android:layout_width="match_parent"
@@ -15,6 +15,7 @@ tools:context=".register">
     android:layout_marginTop="5dp"
     >
     <EditText
+        android:id="@+id/firstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="First Name"
@@ -32,6 +33,7 @@ tools:context=".register">
     android:layout_marginTop="5dp"
     >
     <EditText
+        android:id="@+id/lastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Last Name"
@@ -48,6 +50,7 @@ tools:context=".register">
     android:layout_marginTop="5dp"
     >
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email"
@@ -64,11 +67,12 @@ tools:context=".register">
     android:layout_marginTop="5dp"
     >
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textSize="20dp"
         />
 </com.google.android.material.textfield.TextInputLayout>
@@ -80,11 +84,12 @@ tools:context=".register">
     android:layout_marginTop="5dp"
     >
     <EditText
+        android:id="@+id/confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Confirm Password"
         android:ems="10"
-        android:inputType="text"
+        android:inputType="textPassword"
         android:textSize="20dp"
         />
 </com.google.android.material.textfield.TextInputLayout>
@@ -101,6 +106,7 @@ tools:context=".register">
         android:textSize="20sp"
         />
     <RadioButton
+        android:id="@+id/rdMaleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Male"
@@ -108,6 +114,7 @@ tools:context=".register">
         android:layout_marginLeft="10dp"
         />
     <RadioButton
+        android:id="@+id/rdFemaleBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Female"
@@ -116,9 +123,10 @@ tools:context=".register">
         />
 </RadioGroup>
 <Button
+    android:id="@+id/signUpBtn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Register"
+    android:text="Sign Up"
     android:textSize="22sp"
     android:layout_marginTop="50dp"
     android:textColor="#FFFFFF"
