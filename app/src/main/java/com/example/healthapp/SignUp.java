@@ -93,6 +93,8 @@ public class SignUp extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(SignUp.this, "User Registered", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+
                                 }
                             });
                         }
