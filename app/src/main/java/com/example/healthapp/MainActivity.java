@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                progressDialog=new ProgressDialog(MainActivity.this);
-               progressDialog.setMessage("Logging in...");
+               progressDialog.setMessage("Signing in...");
                progressDialog.show();
 
                 String userEmail =txt_email.getText().toString();

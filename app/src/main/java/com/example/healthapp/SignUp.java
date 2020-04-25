@@ -3,8 +3,10 @@ package com.example.healthapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class SignUp extends AppCompatActivity {
     String gender = "";
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +58,11 @@ public class SignUp extends AppCompatActivity {
         });
 
         btn_signUp.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
+                 progressDialog = new ProgressDialog(SignUp.this);
+                 progressDialog.setMessage("Signing up...");
                  final String firstName = txt_firstName.getText().toString();
                  final String lastName = txt_lastNAme.getText().toString();
                  final String email = txt_email.getText().toString().trim();
@@ -72,35 +77,50 @@ public class SignUp extends AppCompatActivity {
                     gender = "Female";
                 }
 
+                if(TextUtils.isEmpty(firstName)||(TextUtils.isEmpty(lastName))||(TextUtils.isEmpty(email))||(TextUtils.isEmpty(password))||(TextUtils.isEmpty(confirmPassword))){
+                    Toast.makeText(SignUp.this, "Please fill in al the fields.", Toast.LENGTH_LONG).show();
+                }
+                else if(!(password.equals(confirmPassword))){
+                    Toast.makeText(SignUp.this, "Passwords do not match.", Toast.LENGTH_LONG).show();
+                }
+                else if(password.length()<8){
+                    Toast.makeText(SignUp.this, "Password must be eight characters long.", Toast.LENGTH_LONG).show();
+                }
+                else if(!(gender=="Male"|| gender=="Female")){
+                    Toast.makeText(SignUp.this, "Please select gender.", Toast.LENGTH_LONG).show();
+                }
+                else {
+                     progressDialog.show();
+                    // Here user add code...
+                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                                String userId = firebaseUser.getUid();
+                                databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
 
-                // Here user add code...
-                firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                            String userId = firebaseUser.getUid();
-                            databaseReference = FirebaseDatabase.getInstance().getReference().child("User").child(userId);
+                                HashMap<String, Object> map = new HashMap<>();
+                                map.put("First Name", firstName);
+                                map.put("Last Name", lastName);
+                                map.put("Gender", gender);
+                                map.put("Role", role);
+                                map.put("Email", email);
 
-                            HashMap<String,Object> map = new HashMap<>();
-                            map.put("First Name", firstName);
-                            map.put("Last Name",lastName);
-                            map.put("Gender",gender);
-                            map.put("Role",role);
-                            map.put("Email",email);
+                                databaseReference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(SignUp.this, "User Registered", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
 
-                            databaseReference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(SignUp.this, "User Registered", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    }
+                                });
+                            }
 
-                                }
-                            });
                         }
-
-                    }
-                });
+                    });
+                }
 
             }
         });
