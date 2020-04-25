@@ -1,3 +1,48 @@
 <resources>
     <string name="app_name">HealthApp</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="login_now">Login Now</string>
+    <string name="username">Username</string>
+    <string name="superman">superman</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="emailaddress">EmailAddress</string>
+    <string name="submit">Submit</string>
+    <string name="email">Email</string>
+    <string name="copyright_2020_health_ptv_ltd"><u>\u00A9 Copyright 2020 Health ptv Ltd</u></string>
+    <string name="dashboard">Dashboard</string>
+    <string name="doctor_source">Doctor Source</string>
+    <string name="medical_id">Medical ID</string>
+    <string name="home">Home</string>
+    <string name="scoot_brand">Scoot Brand</string>
+    <string name="medical_conditions">Medical conditions</string>
+    <string name="hypertension">Hypertension</string>
+    <string name="medical_notes">Medical notes</string>
+    <string name="medications">Medications</string>
+    <string name="pickups">Pickups</string>
+    <string name="in_active_deliveries">In-active Deliveries</string>
+    <string name="active_deliveries">Active Deliveries</string>
+    <string name="_1_pm">1 PM</string>
+    <string name="_4_pm">4 PM</string>
+    <string name="google_map_API_Key">AIzaSyAUvfwaUZRMN8BIJ-Pw3hDItx3fKUNAovw</string>
+    <string name="doctor_smith">Doctor.Smith</string>
+
+
+    <string-array name="navigation_drawer_items_array">
+        <item>Connect</item>
+        <item>My Profile</item>
+        <item>Messages</item>
+        <item>Online Consultation</item>
+        <item>Subscription</item>
+        <item>Contacts</item>
+        <item>Accounts</item>
+        <item>Settings</item>
+        <item>Logout</item>
+    </string-array>
+
 </resources>
