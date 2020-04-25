@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class SignUp extends AppCompatActivity {
 
     EditText txt_firstName, txt_lastNAme,txt_email,txt_password,txt_confirmPassword;
-    Button btn_signUp;
+    Button btn_signUp,btn_login;
     RadioButton radioMale,radioFemale;
     String role = "Patient";
     String gender = "";
@@ -42,10 +42,17 @@ public class SignUp extends AppCompatActivity {
         txt_password = findViewById(R.id.password);
         txt_confirmPassword = findViewById(R.id.confirmPassword);
         btn_signUp = findViewById(R.id.signUpBtn);
+        btn_login=findViewById(R.id.loginBtn);
         radioMale = findViewById(R.id.rdMaleBtn);
         radioFemale = findViewById(R.id.rdFemaleBtn);
         firebaseAuth=FirebaseAuth.getInstance();
 
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            }
+        });
 
         btn_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
