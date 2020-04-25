@@ -6,20 +6,22 @@
     android:orientation="vertical"
     android:padding="30dp"
     tools:context=".SignUp">
+
     <ImageView
         android:id="@+id/imgView_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="180dp"
+        android:layout_height="236dp"
+        android:layout_marginLeft="90sp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:layout_marginLeft="120sp"
         android:src="@drawable/app_icon" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         android:textColorHint="#FF4500"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         >
         <EditText
             android:id="@+id/email"
@@ -55,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="Sign In"
         android:textSize="20sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:textColor="#FFFFFF"
         android:background="@drawable/signup_btn"
         />

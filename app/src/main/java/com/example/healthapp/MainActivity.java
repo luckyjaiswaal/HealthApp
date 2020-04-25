@@ -3,8 +3,10 @@ package com.example.healthapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_createAccount, btn_SignIn;
     EditText txt_email, txt_password;
     FirebaseAuth firebaseAuth;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,19 +50,35 @@ public class MainActivity extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               progressDialog=new ProgressDialog(MainActivity.this);
+               progressDialog.setMessage("Logging in...");
+               progressDialog.show();
+
                 String userEmail =txt_email.getText().toString();
                 String userPassword=txt_password.getText().toString();
 
-                firebaseAuth.signInWithEmailAndPassword(userEmail,userPassword)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
-                                    startActivity(new Intent(getApplicationContext(),MainDashboard.class));
-                                }
+                if(TextUtils.isEmpty(userEmail)||(TextUtils.isEmpty(userPassword))){
+                    progressDialog.dismiss();
+                    Toast.makeText(MainActivity.this, "Please enter Email and Password", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        progressDialog.dismiss();
+                                        startActivity(new Intent(getApplicationContext(), MainDashboard.class));
+                                    } else {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(MainActivity.this, "Invalid Email or Password!", Toast.LENGTH_LONG).show();
+                                    }
 
-                            }
-                        });
+
+                                }
+                            });
+                }
+
 
 
             }
