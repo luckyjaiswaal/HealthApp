@@ -23,6 +23,8 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_createAccount, btn_SignIn;
+    EditText txt_email, txt_password;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn_createAccount=findViewById(R.id.createAccountBtn);
         btn_SignIn=findViewById(R.id.signInBtn);
+        txt_email=findViewById(R.id.email);
+        txt_password=findViewById(R.id.password);
+        firebaseAuth=FirebaseAuth.getInstance();
 
         btn_createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +47,20 @@ public class MainActivity extends AppCompatActivity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String userEmail =txt_email.getText().toString();
+                String userPassword=txt_password.getText().toString();
+
+                firebaseAuth.signInWithEmailAndPassword(userEmail,userPassword)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    startActivity(new Intent(getApplicationContext(),MainDashboard.class));
+                                }
+
+                            }
+                        });
+
 
             }
         });
