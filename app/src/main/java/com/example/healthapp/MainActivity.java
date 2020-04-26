@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar toolbar;
     private TextView mTitle_toolbar;
     private LinearLayout layoutDashboard, layoutDoctorSource, layoutMedicalId;
-//    private DrawerLayout dl;
-//    private ActionBarDrawerToggle t;
-//    private NavigationView nv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
