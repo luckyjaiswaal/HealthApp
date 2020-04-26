@@ -12,16 +12,14 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.healthapp.R;
-
+import com.example.healthapp.util.Utils;
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
-
     Context mContext;
     int layoutResourceId;
     DataModel data[] = null;
 
     public DrawerItemCustomAdapter(Context mContext, int layoutResourceId, DataModel[] data) {
-
         super(mContext, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.mContext = mContext;
@@ -30,9 +28,7 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         View listItem = convertView;
-
         LayoutInflater inflater = ((Activity) mContext).getLayoutInflater();
         listItem = inflater.inflate(layoutResourceId, parent, false);
         ConstraintLayout layoutHeader = (ConstraintLayout) listItem.findViewById(R.id.layoutHeader);
@@ -40,15 +36,20 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
         TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
         if (position == 0){
             layoutHeader.setVisibility(View.VISIBLE);
+            ImageView imgLogo = (ImageView) listItem.findViewById(R.id.img_logo);
+            if(imgLogo != null)
+                Utils.changeImageViewColor((Activity) mContext, imgLogo, R.color.white);
             imageViewIcon.setVisibility(View.GONE);
             textViewName.setVisibility(View.GONE);
-        }else {
+        }
+        else {
             layoutHeader.setVisibility(View.GONE);
             imageViewIcon.setVisibility(View.VISIBLE);
             textViewName.setVisibility(View.VISIBLE);
             DataModel folder = data[position];
-
             imageViewIcon.setImageResource(folder.icon);
+            if(imageViewIcon != null)
+                Utils.changeImageViewColor((Activity) mContext, imageViewIcon, R.color.white);
             textViewName.setText(folder.name);
         }
 

@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">HealthApp</string>
+    <string name="api_key">AIzaSyCA-Vw7ZfD_WB1YXZMnnIG4rYyYY2mQrsA</string>
+
     <string name="Open">Open</string>
     <string name="Close">Close</string>
     <string name="login">Login</string>
     <string name="registration">Registration</string>
     <string name="login_now">Login Now</string>
     <string name="username">Username</string>
-    <string name="superman">superman</string>
+    <string name="superman">eg. superman</string>
     <string name="password">Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="last_name">Last Name</string>
@@ -31,6 +33,13 @@
     <string name="_4_pm">4 PM</string>
     <string name="google_map_API_Key">AIzaSyAUvfwaUZRMN8BIJ-Pw3hDItx3fKUNAovw</string>
     <string name="doctor_smith">Doctor.Smith</string>
+    <string name="login_with_facebook">Login with Facebook</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="eg_scootband_gmail_com">eg. scootband@gmail.com</string>
+    <string name="eg_scoot">eg. scoot</string>
+    <string name="eg_band">eg. band</string>
+    <string name="password1">eg. 12345678</string>
+    <string name="dummy">lorem ipsum lorem ipsum lorem ipsum</string>
 
 
     <string-array name="navigation_drawer_items_array">

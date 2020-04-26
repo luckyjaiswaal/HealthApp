@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,9 +21,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.healthapp.navigationdata.DataModel;
 import com.example.healthapp.navigationdata.DrawerItemCustomAdapter;
+import com.example.healthapp.util.Utils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private String[] mNavigationDrawerItemTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar toolbar;
     private TextView mTitle_toolbar;
     private LinearLayout layoutDashboard, layoutDoctorSource, layoutMedicalId;
+    private ImageView dashboardImg, doctorImg, medicalImg;
+    private TextView dashboardTxt, doctorTxt, medicalTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +67,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutDoctorSource = findViewById(R.id.layoutDoctorSource);
         layoutMedicalId = findViewById(R.id.layoutMedicalId);
 
+        dashboardImg = findViewById(R.id.dashboardImg);
+        dashboardTxt = findViewById(R.id.dashboardTxt);
+        doctorImg = findViewById(R.id.doctorImg);
+        doctorTxt = findViewById(R.id.doctorTxt);
+        medicalImg = findViewById(R.id.medicalImg);
+        medicalTxt = findViewById(R.id.medicalTxt);
+
         layoutDashboard.setOnClickListener(this);
         layoutDoctorSource.setOnClickListener(this);
         layoutMedicalId.setOnClickListener(this);
 
-        setTitle("DashBoard");
+        setTitle("Dashboard");
         replaceFragment(new HomeFragment());
+        setSelected(0);
     }
 
     @Override
@@ -78,19 +89,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()){
             case R.id.layoutDashboard:
                 fragment = new HomeFragment();
-                setTitle("DashBoard");
+                setTitle("Dashboard");
                 replaceFragment(fragment);
+                setSelected(0);
                 break;
             case R.id.layoutDoctorSource:
                 fragment = new MapAndDoctorFragment();
                 setTitle("Doctor Source");
                 replaceFragment(fragment);
+                setSelected(1);
                 break;
             case R.id.layoutMedicalId:
                 fragment = new MedicalIDFragment();
                 setTitle("Medical ID");
                 replaceFragment(fragment);
+                setSelected(2);
                 break;
+        }
+    }
+
+    private void setSelected(int tab) {
+        Utils.changeImageViewColor(this, dashboardImg, R.color.light_gray);
+        dashboardTxt.setTextColor(getResources().getColor(R.color.light_gray));
+
+        Utils.changeImageViewColor(this, doctorImg, R.color.light_gray);
+        doctorTxt.setTextColor(getResources().getColor(R.color.light_gray));
+
+        Utils.changeImageViewColor(this, medicalImg, R.color.light_gray);
+        medicalTxt.setTextColor(getResources().getColor(R.color.light_gray));
+
+        if(tab == 0){
+            Utils.changeImageViewColor(this, dashboardImg, R.color.white);
+            dashboardTxt.setTextColor(getResources().getColor(R.color.white));
+        }
+        else if(tab == 1){
+            Utils.changeImageViewColor(this, doctorImg, R.color.white);
+            doctorTxt.setTextColor(getResources().getColor(R.color.white));
+        }
+        else if(tab == 2){
+            Utils.changeImageViewColor(this, medicalImg, R.color.white);
+            medicalTxt.setTextColor(getResources().getColor(R.color.white));
         }
     }
 

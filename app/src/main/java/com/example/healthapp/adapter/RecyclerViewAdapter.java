@@ -12,7 +12,6 @@ import com.example.healthapp.model.SafeJSONObject;
 
 
 public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     private SafeJSONArray itemsData;
     protected Context ctx;
     protected View.OnClickListener mListener;

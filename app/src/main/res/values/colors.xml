@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#19AA8B</color>
-    <color name="colorPrimaryDark">#19AA8B</color>
+    <color name="colorPrimaryMedium">#007A69</color>
+    <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="black">#000000</color>
 
@@ -13,6 +14,10 @@
     //Dashboard
     <color name="colorAccentDashboard">#D81B60</color>
     <color name="colorPrimaryDarkDashboard">#00574B</color>
-    <color name="gray">#2D2D2D</color>
+    <color name="gray">#838383</color>
+    <color name="light_gray">#D6D6D6</color>
+
+    <color name="facebook">#3b579d</color>
+    <color name="google">#cf4332</color>
 
 </resources>

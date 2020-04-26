@@ -4,13 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+import com.example.healthapp.util.Utils;
 
-    private ImageView img_login;
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private RelativeLayout img_login;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,10 +25,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        Utils.clickEffect(v);
         switch (v.getId()){
             case R.id.img_login:
-                Intent intent = new Intent(this,
-                        MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
                 finishAffinity();

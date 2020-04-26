@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.healthapp.util.Utils;
+
 public class ChooseLoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btn_login, btn_register;
@@ -26,6 +28,7 @@ public class ChooseLoginActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        Utils.clickEffect(v);
         switch (v.getId()){
             case R.id.btn_login:
                 startActivity(new Intent(this, LoginActivity.class));

@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SplashScreenActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreenActivity.this, ChooseLoginActivity.class));
+                startActivity(new Intent(SplashActivity.this, ChooseLoginActivity.class));
                 finish();
-
             }
         }, 3*1000);
     }

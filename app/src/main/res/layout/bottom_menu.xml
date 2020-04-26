@@ -18,15 +18,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/dashboardImg"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_dashboard" />
 
         <TextView
+            android:id="@+id/dashboardTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dashboard"
-            android:textColor="@color/black" />
+            android:textColor="@color/light_gray" />
 
     </LinearLayout>
 
@@ -43,15 +45,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/doctorImg"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_person" />
 
         <TextView
+            android:id="@+id/doctorTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/doctor_source"
-            android:textColor="@color/black" />
+            android:textColor="@color/light_gray" />
 
     </LinearLayout>
 
@@ -68,15 +72,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/medicalImg"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_card" />
 
         <TextView
+            android:id="@+id/medicalTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/medical_id"
-            android:textColor="@color/black" />
+            android:textColor="@color/light_gray" />
 
     </LinearLayout>
 

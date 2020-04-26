@@ -8,8 +8,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimaryDarkDashboard"
+        android:layout_height="55dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="@string/doctor_smith"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_back"
             app:layout_constraintEnd_toEndOf="@+id/img_video"
@@ -38,8 +38,9 @@
 
         <ImageView
             android:id="@+id/img_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/ic_videocam_black"
             app:layout_constraintTop_toTopOf="parent"
@@ -48,9 +49,10 @@
 
         <ImageView
             android:id="@+id/img_call"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/ic_call_black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_search"
@@ -58,8 +60,9 @@
 
         <ImageView
             android:id="@+id/img_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/ic_search_black"
             app:layout_constraintTop_toTopOf="parent"
@@ -68,9 +71,10 @@
 
         <ImageView
             android:id="@+id/img_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
             android:src="@drawable/ic_more_black"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,8 +87,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_chat_left"
-        tools:itemCount="4"
         app:layout_constraintTop_toBottomOf="@+id/layoutHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,8 +102,9 @@
 
         <ImageView
             android:id="@+id/img_gallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_file_upload_black"
             app:layout_constraintTop_toTopOf="parent"
@@ -110,8 +113,9 @@
 
         <ImageView
             android:id="@+id/img_camera"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
             android:layout_marginStart="5dp"
             android:src="@drawable/ic_camera_black"
             app:layout_constraintTop_toTopOf="parent"
@@ -123,19 +127,27 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:background="@drawable/et_bg_white"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
-            android:paddingEnd="70dp"
+            android:hint="Enter message"
+            android:textSize="14sp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/img_camera"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/img_send"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="7dp"
             android:src="@drawable/ic_send_black"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/txtMsg"
             app:layout_constraintBottom_toBottomOf="@+id/txtMsg"/>
