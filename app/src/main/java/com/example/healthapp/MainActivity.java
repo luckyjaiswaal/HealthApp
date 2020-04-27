@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         layoutMedicalId.setOnClickListener(this);
 
         setTitle("Dashboard");
-        replaceFragment(new HomeFragment());
+        replaceFragment(new MapAndDoctorFragment());
         setSelected(0);
     }
 
@@ -88,13 +88,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (v.getId()){
             case R.id.layoutDashboard:
-                fragment = new HomeFragment();
+                fragment = new MapAndDoctorFragment();
                 setTitle("Dashboard");
                 replaceFragment(fragment);
                 setSelected(0);
                 break;
             case R.id.layoutDoctorSource:
-                fragment = new MapAndDoctorFragment();
+                fragment = new HomeFragment();
                 setTitle("Doctor Source");
                 replaceFragment(fragment);
                 setSelected(1);

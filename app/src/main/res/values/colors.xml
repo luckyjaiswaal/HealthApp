@@ -3,7 +3,7 @@
     <color name="colorPrimary">#19AA8B</color>
     <color name="colorPrimaryMedium">#007A69</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#FFFFFF</color>
+    <color name="colorAccent">#19AA8B</color>
     <color name="black">#000000</color>
 
     <color name="white">#FFFFFF</color>
@@ -16,6 +16,7 @@
     <color name="colorPrimaryDarkDashboard">#00574B</color>
     <color name="gray">#838383</color>
     <color name="light_gray">#D6D6D6</color>
+    <color name="light_gray1">#E4E4E4</color>
 
     <color name="facebook">#3b579d</color>
     <color name="google">#cf4332</color>

@@ -1,94 +1,78 @@
 package com.example.healthapp.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.healthapp.model.SafeJSONArray;
-import com.example.healthapp.model.SafeJSONObject;
+import com.example.healthapp.R;
+import com.example.healthapp.model.DSModel;
+import com.example.healthapp.util.Utils;
 
+import java.util.List;
 
-public abstract class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private SafeJSONArray itemsData;
-    protected Context ctx;
-    protected View.OnClickListener mListener;
-    protected int layoutResource;
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+    Context context;
+    List<DSModel> models;
 
-    public RecyclerViewAdapter(Context context, int layoutResource2){
-        this.ctx = context;
-        this.layoutResource = layoutResource2;
+    public RecyclerViewAdapter(Context context, List<DSModel> models) {
+        this.context = context;
+        this.models = models;
     }
 
-    public void setOnClickListener(View.OnClickListener mItemClickListener) {
-        this.mListener = mItemClickListener;
-    }
-
-    public void setItemsData (SafeJSONArray itemsData1){
-//        if(itemsData1 != null) {
-            this.itemsData =new SafeJSONArray(itemsData1.toString());
-//            Log.e("itemsData","itemsData = " + itemsData);
-            super.notifyDataSetChanged();
-//        }
-    }
-
-    public void notifyDataSetChanged(SafeJSONArray itemsData2) {
-        // TODO Auto-generated method stub
-        this.itemsData = new SafeJSONArray(itemsData2.toString());
-        super.notifyDataSetChanged();
-    }
-
-    public SafeJSONObject getItem(int position) {
-        // TODO Auto-generated method stub
-        return itemsData.getJSONObject(position);
-    }
-
-    public SafeJSONArray getallItems (){
-        return itemsData;
+    public void setData(List<DSModel> models) {
+        this.models = models;
+        notifyDataSetChanged();
     }
 
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(
-                    layoutResource, parent, false);
-            // create ViewHolder
-        return new AdapterViewHolder(itemView);
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = null;
+        view = LayoutInflater.from(context).inflate(R.layout.item_doctor_list, parent, false);
+        return new MyViewHolder(view, viewType);
+    }
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        // set data on views here
+        DSModel model = models.get(position);
+        Utils.changeImageViewColor((Activity)context, holder.img_options, R.color.gray);
+        if(model.getType() == 1){
+            holder.img_avatar.setImageResource(R.drawable.patient);
+            holder.title.setTextColor(context.getResources().getColor(R.color.black));
+            holder.detail.setTextColor(context.getResources().getColor(R.color.gray));
+            holder.title.setText("Patient Name");
+        }
+        else{
+            holder.img_avatar.setImageResource(R.drawable.pharmacy);
+            holder.title.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.detail.setTextColor(context.getResources().getColor(R.color.colorPrimary));
+            holder.title.setText("Pharmacy Name");
+        }
     }
 
     @Override
     public int getItemCount() {
-        if (itemsData == null)
-            return 0;
-
-        int length = itemsData.length();
-        //Logger.debug("length: "+length);
-        return length;
+        return models.size();
     }
 
-    public RecyclerView.ViewHolder getViewHolder(View onClickView, int itemResId) {
-        RecyclerView.ViewHolder viewHolder;
-        int parentResId = onClickView.getId();
-        if (parentResId == itemResId){
-            viewHolder = (RecyclerView.ViewHolder) onClickView.getTag();
-        }
-        else {
-            View parent = ((View) onClickView.getParent());
-            parentResId = parent.getId();
-            while (parentResId != itemResId){
+    public class MyViewHolder extends RecyclerView.ViewHolder{
+        // declare views here
+        ImageView img_avatar, img_options;
+        TextView title, detail;
 
-                //todo Break infinite loop because Your parent View has reached to RecyclerView;
-                if (parent instanceof RecyclerView){
-                    return null;
-                }
-
-                parent = ((View) parent.getParent());
-                parentResId = parent.getId();
-            }
-            viewHolder = (RecyclerView.ViewHolder) parent.getTag();
+        public MyViewHolder(View itemView, int viewType) {
+            super(itemView);
+            //initialize views here
+            img_avatar = itemView.findViewById(R.id.img_avatar);
+            img_options = itemView.findViewById(R.id.img_options);
+            title = itemView.findViewById(R.id.txtTitle);
+            detail = itemView.findViewById(R.id.txtDetail);
         }
-        return viewHolder;
     }
 }
