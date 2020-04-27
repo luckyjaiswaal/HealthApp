@@ -293,11 +293,11 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
     }
 
     private void fillDummy() {
-        models.add(new DSModel(1, 30.9623586,70.8052618));
-        models.add(new DSModel(2,30.9037176,70.894563));
-        models.add(new DSModel(1, 30.9893016,70.986225));
-        models.add(new DSModel(2, 30.927917, 70.998542));
-        models.add(new DSModel(1, 30.991808, 70.961114));
+        models.add(new DSModel(1, -33.8476295,151.0866852));
+        models.add(new DSModel(2, -33.862709,151.0873566));
+        models.add(new DSModel(1, -33.8266373,151.0800934));
+        models.add(new DSModel(2, -33.8727837,151.0932617));
+        models.add(new DSModel(1, -33.8316307,151.1265869));
     }
 
 }
