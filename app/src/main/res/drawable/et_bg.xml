@@ -2,22 +2,13 @@
     android:shape="rectangle">
 
     <corners
-        android:radius="10dp" />
-
-    <stroke
-        android:color="@color/white"
-        android:width="3dp" />
-
-    <solid android:color="@android:color/white" />
         android:bottomLeftRadius="20dp"
         android:bottomRightRadius="20dp"
-        android:topLeftRadius="20dp"
+        android:topLeftRadius="0dp"
         android:topRightRadius="20dp" />
 
     <stroke
-        android:color="@color/transparent"
+        android:color="@color/white"
         android:width="1dp" />
-
-
 
 </shape>
