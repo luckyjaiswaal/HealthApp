@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_createAccount, btn_SignIn;
+    Button btn_createAccount, btn_SignIn, doctorDashboard;
     EditText txt_email, txt_password;
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         btn_createAccount=findViewById(R.id.createAccountBtn);
         btn_SignIn=findViewById(R.id.signInBtn);
+        doctorDashboard = findViewById(R.id.doctorDashboard);
         txt_email=findViewById(R.id.email);
         txt_password=findViewById(R.id.password);
         firebaseAuth=FirebaseAuth.getInstance();
@@ -43,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),SignUp.class));
+
+            }
+        });
+
+        doctorDashboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),DoctorDashboard.class));
 
             }
         });
