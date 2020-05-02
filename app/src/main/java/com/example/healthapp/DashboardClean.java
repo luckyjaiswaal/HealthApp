@@ -279,7 +279,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         Builder.getWindow().setBackgroundDrawableResource(R.color.white);
         Builder.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#000000"));
         Builder.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#000000"));
-        
+
     }
 
 }
