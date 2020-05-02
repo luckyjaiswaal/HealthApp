@@ -1,6 +1,8 @@
 package com.example.healthapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -255,7 +258,28 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
     }
 
     private void requestApproval() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DashboardClean.this);
+        builder.setMessage("Are you a doctor and want to get approval?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog Builder = builder.create();
+        Builder.setTitle("Please confirm");
+        Builder.show();
+        Builder.getWindow().setBackgroundDrawableResource(R.color.white);
+        Builder.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#000000"));
+        Builder.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#000000"));
+        
     }
 
 }

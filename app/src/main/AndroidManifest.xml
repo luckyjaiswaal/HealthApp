@@ -15,11 +15,11 @@
 
         <activity android:name=".SignUp"></activity>
 
-        <activity android:name=".DashboardClean"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".ChatActivity" />
         <activity android:name=".SplashActivity"/>
         <activity android:name=".MainDashboard" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".DashboardClean">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
