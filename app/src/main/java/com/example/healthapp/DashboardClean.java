@@ -44,7 +44,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         setupToolbar();
-        DataModel[] drawerItem = new DataModel[9];
+        DataModel[] drawerItem = new DataModel[10];
         drawerItem[0] = new DataModel(R.drawable.connect, "Connect");
         drawerItem[1] = new DataModel(R.drawable.ic_person_black, "My Profile");
         drawerItem[2] = new DataModel(R.drawable.ic_chat_black, "Messages");
@@ -52,8 +52,9 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         drawerItem[4] = new DataModel(R.drawable.ic_subscriptions_black, "Subscription");
         drawerItem[5] = new DataModel(R.drawable.ic_contacts_black, "Contacts");
         drawerItem[6] = new DataModel(R.drawable.ic_account_box_black, "Accounts");
-        drawerItem[7] = new DataModel(R.drawable.ic_settings_black, "Settings");
-        drawerItem[8] = new DataModel(R.drawable.ic_logout_black, "Logout");
+        drawerItem[7] = new DataModel(R.drawable.ic_doctor_approval, "Request Approval");
+        drawerItem[8] = new DataModel(R.drawable.ic_settings_black, "Settings");
+        drawerItem[9] = new DataModel(R.drawable.ic_logout_black, "Logout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
         DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, drawerItem);
@@ -153,7 +154,8 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
             case 3:
             case 4:
             case 5:
-            case 6:
+            case 6: requestApproval();
+            case 7:
 //                mDrawerList.setItemChecked(position, true);
 //                mDrawerList.setSelection(position);
 //                setTitle(mNavigationDrawerItemTitles[position]);
@@ -170,20 +172,19 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
                 break;
 
 
-                // The below code is commented , this will be fixed after merge_LJ
-           // case 7:
-             //   mDrawerLayout.closeDrawer(mDrawerList);
-             //   Intent intent = new Intent(this,
-              //          LoginActivity.class);
-            //    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-           //     startActivity(intent);
-             //   finishAffinity();
-//                mDrawerList.setItemChecked(position, true);
-//                mDrawerList.setSelection(position);
-//                setTitle(mNavigationDrawerItemTitles[position]);
-//                mDrawerLayout.closeDrawer(mDrawerList);
-//                fragment = new TableFragment();
-               // break;
+            case 8:
+                mDrawerLayout.closeDrawer(mDrawerList);
+                Intent intent = new Intent(this,
+                        MainActivity.class);
+               intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finishAffinity();
+                mDrawerList.setItemChecked(position, true);
+                mDrawerList.setSelection(position);
+                setTitle(mNavigationDrawerItemTitles[position]);
+               mDrawerLayout.closeDrawer(mDrawerList);
+           //    fragment = new TableFragment();
+               break;
 
             default:
                 break;
@@ -202,6 +203,8 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
             Log.e("MainActivity", "Error in creating fragment");
         }
     }
+
+
 
     void replaceFragment(Fragment fragment) {
         if (fragment != null) {
@@ -249,6 +252,10 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.app_name, R.string.app_name);
         //This is necessary to change the icon of the Drawer Toggle upon state change.
         mDrawerToggle.syncState();
+    }
+
+    private void requestApproval() {
+
     }
 
 }
