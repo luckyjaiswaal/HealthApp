@@ -8,21 +8,19 @@
     tools:context=".SignUp">
 
 
-
     <ImageView
         android:id="@+id/imgView_logo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="176dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="90sp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/app_icon" />
+        android:src="@drawable/appicon2" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/black"
         android:layout_marginTop="25dp"
         >
         <EditText
@@ -39,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/black"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -61,7 +59,7 @@
         android:textSize="20sp"
         android:layout_marginTop="30dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/signup_btn"
+        android:background="@drawable/grad_bg"
         />
     <Button
         android:id="@+id/createAccountBtn"
@@ -71,7 +69,7 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/signup_btn"
+        android:background="@drawable/grad_bg"
         />
 
     <Button
@@ -82,6 +80,13 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/signup_btn"
+        android:background="@drawable/grad_bg"
         />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="eHealthApp 2020" />
 </LinearLayout>

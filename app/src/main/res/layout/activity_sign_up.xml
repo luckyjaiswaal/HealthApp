@@ -11,7 +11,7 @@ tools:context=".SignUp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    android:textColorHint="#FF4500"
+    android:textColorHint="@color/black"
     android:layout_marginTop="5dp"
     >
     <EditText
@@ -29,7 +29,7 @@ tools:context=".SignUp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    android:textColorHint="#FF4500"
+    android:textColorHint="@color/black"
     android:layout_marginTop="5dp"
     >
     <EditText
@@ -46,7 +46,7 @@ tools:context=".SignUp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    android:textColorHint="#FF4500"
+    android:textColorHint="@color/black"
     android:layout_marginTop="5dp"
     >
     <EditText
@@ -63,7 +63,7 @@ tools:context=".SignUp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    android:textColorHint="#FF4500"
+    android:textColorHint="@color/black"
     android:layout_marginTop="5dp"
     >
     <EditText
@@ -80,7 +80,7 @@ tools:context=".SignUp">
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusableInTouchMode="true"
-    android:textColorHint="#FF4500"
+    android:textColorHint="@color/black"
     android:layout_marginTop="5dp"
     >
     <EditText
@@ -130,16 +130,16 @@ tools:context=".SignUp">
     android:textSize="20sp"
     android:layout_marginTop="50dp"
     android:textColor="#FFFFFF"
-    android:background="@drawable/signup_btn"
+    android:background="@drawable/grad_bg"
     />
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already Have an Account"
-        android:textSize="20sp"
+        android:text="Already Have an Account? Click here"
+        android:textSize="15sp"
         android:layout_marginTop="10dp"
         android:textColor="#FFFFFF"
-        android:background="@drawable/signup_btn"
+        android:background="@drawable/grad_bg"
         />
 </LinearLayout>
