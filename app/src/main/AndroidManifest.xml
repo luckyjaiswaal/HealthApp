@@ -11,16 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-
-        <activity android:name=".SignUp"></activity>
-
-        <activity android:name=".DashboardClean"></activity>
+        <activity android:name=".BookingActivity"></activity>
+        <activity
+            android:name=".DoctorDetailActivity"
+            android:label="@string/title_activity_doctor_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SignUp" />
+        <activity android:name=".DashboardClean" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".SplashActivity" />
         <activity android:name=".MainDashboard" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

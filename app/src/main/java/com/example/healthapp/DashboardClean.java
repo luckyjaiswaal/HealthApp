@@ -94,7 +94,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
                 setSelected(0);
                 break;
             case R.id.layoutDoctorSource:
-                fragment = new HomeFragment();
+                fragment = new DoctorListFragment();
                 setTitle("Doctor Source");
                 replaceFragment(fragment);
                 setSelected(1);
