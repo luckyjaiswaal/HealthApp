@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -30,8 +31,13 @@ import com.example.healthapp.util.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class DashboardClean extends AppCompatActivity implements View.OnClickListener {
     private String[] mNavigationDrawerItemTitles;
@@ -44,9 +50,10 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
     private LinearLayout layoutDashboard, layoutDoctorSource, layoutMedicalId;
     private ImageView dashboardImg, doctorImg, medicalImg;
     private TextView dashboardTxt, doctorTxt, medicalTxt;
-    private String userID;
+    private String userID,fname,lname;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userRef,doctorApprovalRef;
+    DataSnapshot dataSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +62,20 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         mTitle = getTitle();
         firebaseAuth=FirebaseAuth.getInstance();
         userID=firebaseAuth.getCurrentUser().getUid();
-        userRef = FirebaseDatabase.getInstance().getReference().child("User");
-        doctorApprovalRef = FirebaseDatabase.getInstance().getReference().child("DoctorApprovalRequests");
+        userRef = FirebaseDatabase.getInstance().getReference().child("User").child(userID);
+        doctorApprovalRef = FirebaseDatabase.getInstance().getReference().child("DoctorApprovalRequests").child(userID);
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                fname=dataSnapshot.child("First Name").getValue().toString();
+                lname=dataSnapshot.child("Last Name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         mNavigationDrawerItemTitles= getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -297,15 +316,19 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
     }
 
     public void sendRequestApproval(){
+        Toast.makeText(DashboardClean.this, fname, Toast.LENGTH_SHORT).show();
+
         final ProgressDialog progressDialog;
         progressDialog=new ProgressDialog(DashboardClean.this);
         progressDialog.setMessage("Sending request...");
         progressDialog.show();
 
-        doctorApprovalRef.child(userID)
-                .child("Request_Status").setValue("Sent")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
+            HashMap<String, Object> map = new HashMap<>();
+            map.put("First Name", fname);
+            map.put("Last Name", lname);
+            map.put("Request Status", "Sent");
+            doctorApprovalRef.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
