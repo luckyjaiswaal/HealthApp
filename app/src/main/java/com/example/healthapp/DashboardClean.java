@@ -324,9 +324,9 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         progressDialog.show();
 
             HashMap<String, Object> map = new HashMap<>();
-            map.put("First Name", fname);
-            map.put("Last Name", lname);
-            map.put("Request Status", "Sent");
+            map.put("FirstName", fname);
+            map.put("LastName", lname);
+            map.put("RequestStatus", "Sent");
             doctorApprovalRef.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
                     public void onComplete(@NonNull Task<Void> task) {
