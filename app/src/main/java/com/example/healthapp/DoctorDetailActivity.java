@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class DoctorDetailActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageView img_back;
-    private TextView doctorName, introduction, timeslots;
+    private TextView doctorName, introduction;
     private Doctor currentDoctor;
     private Button bookBtn;
     @Override
@@ -30,16 +30,10 @@ public class DoctorDetailActivity extends AppCompatActivity implements View.OnCl
         img_back = findViewById(R.id.img_back);
         doctorName = findViewById(R.id.doctorName);
         introduction = findViewById(R.id.introduction);
-        timeslots = findViewById(R.id.timeslots);
         bookBtn = findViewById(R.id.bookBtn);
         currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
         doctorName.setText(currentDoctor.getFirstName() + " " + currentDoctor.getLastName());
         introduction.setText(currentDoctor.getIntroduction());
-        String timeslotStr = "";
-        for(Integer i : currentDoctor.getAvailableTimes()) {
-            timeslotStr = timeslotStr + TimeSlot.timeSlots.get(i) + "\n";
-        }
-        timeslots.setText(timeslotStr);
         img_back.setOnClickListener(this);
         bookBtn.setOnClickListener(this);
     }

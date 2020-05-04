@@ -10,15 +10,15 @@ public class Doctor implements Serializable {
     private String lastName;
     private String department;
     private String introduction;
-    private List<Integer> availableTimes = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    public Doctor(int id, String firstName, String lastName, String department, String introduction, List<Integer> availableTimes) {
+    public Doctor() {}
+
+    public Doctor(int id, String firstName, String lastName, String department, String introduction) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
         this.introduction = introduction;
-        // this.availableTimes = availableTimes;
     }
 
     public int getId() {
@@ -59,13 +59,5 @@ public class Doctor implements Serializable {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public List<Integer> getAvailableTimes() {
-        return availableTimes;
-    }
-
-    public void setAvailableTimes(List<Integer> availableTimes) {
-        this.availableTimes = availableTimes;
     }
 }
