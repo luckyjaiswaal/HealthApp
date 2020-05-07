@@ -37,7 +37,7 @@ public class ApprovalList extends AppCompatActivity {
         adapter=new FirebaseRecyclerAdapter<DoctorApprovalList, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull DoctorApprovalList model) {
-                holder.txt_name.setText(model.getFirstName());
+                holder.txt_name.setText(model.getFirstName()+" " +model.getLastName());
 
                 holder.v.setOnClickListener(new View.OnClickListener() {
                     @Override

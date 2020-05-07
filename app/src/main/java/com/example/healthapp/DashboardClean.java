@@ -316,7 +316,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
     }
 
     public void sendRequestApproval(){
-        Toast.makeText(DashboardClean.this, fname, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(DashboardClean.this, fname, Toast.LENGTH_SHORT).show();
 
         final ProgressDialog progressDialog;
         progressDialog=new ProgressDialog(DashboardClean.this);

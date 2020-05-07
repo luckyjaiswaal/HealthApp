@@ -74,6 +74,7 @@ public class ApproveDetailView extends AppCompatActivity {
                                         btn_approve.setText("Approved");
                                         btn_approve.setEnabled(false);
                                         doctorApprovalRequestsRef.child(doctorKey).removeValue();
+                                        userRef.child(doctorKey).child("Role").setValue("Doctor");
                                         btn_reject.setEnabled(false);
                                     }
                                 }
