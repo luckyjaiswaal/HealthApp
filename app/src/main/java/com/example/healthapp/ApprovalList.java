@@ -1,9 +1,11 @@
 package com.example.healthapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,8 +36,17 @@ public class ApprovalList extends AppCompatActivity {
         options=new FirebaseRecyclerOptions.Builder<DoctorApprovalList>().setQuery(ref,DoctorApprovalList.class).build();
         adapter=new FirebaseRecyclerAdapter<DoctorApprovalList, MyViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull MyViewHolder holder, int position, @NonNull DoctorApprovalList model) {
+            protected void onBindViewHolder(@NonNull MyViewHolder holder, final int position, @NonNull DoctorApprovalList model) {
                 holder.txt_name.setText(model.getFirstName());
+
+                holder.v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(ApprovalList.this,ApproveDetailView.class);
+                        intent.putExtra("doctorKey",getRef(position).getKey());
+                        startActivity(intent);
+                    }
+                });
 
 
             }
@@ -50,6 +61,8 @@ public class ApprovalList extends AppCompatActivity {
         adapter.startListening();
         recyclerView.setAdapter(adapter);
     }
+
+
 
 }
 
