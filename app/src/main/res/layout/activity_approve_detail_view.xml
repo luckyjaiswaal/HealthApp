@@ -8,22 +8,40 @@
 
 
     <TextView
-        android:id="@+id/fnameADV"
+        android:id="@+id/nameADV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:text="Doctor Name"
         android:gravity="center"
         android:layout_marginTop="245dp"
         android:textSize="30dp" />
 
     <Button
-
         android:id="@+id/approve"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
         android:layout_marginTop="300dp"
+        android:background="@drawable/approve_btn"
         android:text="Approve"
-        android:textSize="30dp" />
-
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/reject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/approve_btn"
+        android:text="Reject"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/returnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="420dp"
+        android:background="@drawable/approve_btn"
+        android:text="Return to Approval Lists"
+        android:textSize="20dp" />
 </RelativeLayout>
