@@ -80,6 +80,15 @@ public class MainActivity extends AppCompatActivity {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.exists()){
                                                     userType=dataSnapshot.child("Role").getValue().toString();
+                                                    if(userType.equals("Patient")){
+                                                        startActivity(new Intent(getApplicationContext(), DashboardClean.class));
+                                                    }
+                                                    else if(userType.equals("Admin")){
+                                                        startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
+                                                    }
+                                                    else{
+                                                        startActivity(new Intent(getApplicationContext(),DashboardClean.class));
+                                                    }
                                                 }
                                             }
 
@@ -88,19 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                                             }
                                         });
-                                        startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
 
-                                        if(userType.trim().toString().equals("Doctor")){
-                                            Toast.makeText(MainActivity.this, "Inword!", Toast.LENGTH_LONG).show();
-                                        }
-                                        /*else if(userType.equals("Admin")){
-                                            startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
-                                            Toast.makeText(MainActivity.this, "IHola"+userType, Toast.LENGTH_LONG).show();
-
-                                        }
-                                        else{
-                                            startActivity(new Intent(getApplicationContext(),DashboardClean.class));
-                                        }*/
 
                                     } else {
                                         progressDialog.dismiss();
