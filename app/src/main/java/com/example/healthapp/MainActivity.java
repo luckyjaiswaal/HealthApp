@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.exists()){
                                                     userType=dataSnapshot.child("Role").getValue().toString();
-                                                    if(userType.equals("Patient")){
-                                                        startActivity(new Intent(getApplicationContext(), DashboardClean.class));
+                                                    if(userType.equals("Doctor")){
+                                                        startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
                                                     }
                                                     else if(userType.equals("Admin")){
                                                         startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
