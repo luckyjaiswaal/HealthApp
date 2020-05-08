@@ -15,13 +15,13 @@
 
         <activity android:name=".SignUp"></activity>
         <activity android:name=".DoctorDashboard"></activity>
-
         <activity android:name=".DashboardClean"></activity>
+        <activity android:name=".ApproveDetailView"></activity>
+        <activity android:name=".ApprovalList" />
         <activity android:name=".ChatActivity" />
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".SplashActivity" />
         <activity android:name=".MainDashboard" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
