@@ -213,6 +213,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(this,
                         MainActivity.class);
                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+               firebaseAuth.signOut();
                 startActivity(intent);
                 finishAffinity();
                 mDrawerList.setItemChecked(position, true);
