@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         txt_email=findViewById(R.id.email);
         txt_password=findViewById(R.id.password);
         firebaseAuth=FirebaseAuth.getInstance();
+        startActivity(new Intent(getApplicationContext(),ChatActivity.class));
+        finish();
+
         userTypeRef=FirebaseDatabase.getInstance().getReference().child("User");
         btn_createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
