@@ -27,6 +27,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        
         recyclerView = findViewById(R.id.recyclerView);
         img_back = findViewById(R.id.img_back);
         img_video = findViewById(R.id.img_video);
