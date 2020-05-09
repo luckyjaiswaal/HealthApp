@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/img_back"
@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:src="@drawable/ic_arrow_back_black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtName"
@@ -31,126 +31,138 @@
             android:layout_marginStart="20dp"
             android:text="@string/doctor_smith"
             android:textColor="@color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_back"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/img_video"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/img_back"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_video"
-            android:padding="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
+            android:padding="5dp"
             android:src="@drawable/ic_videocam_black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_call"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_call"
-            android:padding="5dp"
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_marginEnd="5dp"
+            android:padding="5dp"
             android:src="@drawable/ic_call_black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_search"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_search"
-            android:padding="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
+            android:padding="5dp"
             android:src="@drawable/ic_search_black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/img_more"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_more"
-            android:padding="5dp"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="5dp"
+            android:padding="5dp"
             android:src="@drawable/ic_more_black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <com.stfalcon.chatkit.messages.MessagesList
+        android:id="@+id/messagesList"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/layoutHeader"
+        app:dateHeaderTextColor="@color/white"
+        app:dateHeaderTextSize="0sp"
+        app:incomingDefaultBubbleColor="#55FF4F9D"
+        app:incomingImageTimeTextColor="@color/gray"
+        app:incomingTextColor="@color/gray"
+        app:incomingTimeTextColor="@color/black"
+        app:outcomingDefaultBubbleColor="#a8a8a8"
+        app:outcomingImageTimeTextColor="@color/gray"
+        app:outcomingTextColor="@color/black"
+        app:outcomingTimeTextColor="@color/gray"
+        app:layout_constraintBottom_toTopOf="@+id/layoutBottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/layoutBottom"/>
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader" />
+
+
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBottom"
         android:layout_width="0dp"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/img_gallery"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="5dp"
             android:layout_marginStart="10dp"
+            android:padding="5dp"
             android:src="@drawable/ic_file_upload_black"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_camera"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="5dp"
             android:layout_marginStart="5dp"
+            android:padding="5dp"
             android:src="@drawable/ic_camera_black"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/img_gallery"/>
+            app:layout_constraintStart_toEndOf="@+id/img_gallery"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/txtMsg"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:background="@drawable/et_bg_white"
-            android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/et_bg_white"
             android:hint="Enter message"
-            android:textSize="14sp"
-            android:paddingLeft="10dp"
             android:paddingStart="10dp"
+            android:paddingLeft="10dp"
             android:paddingEnd="10dp"
             android:paddingRight="10dp"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/img_camera"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/img_camera"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/img_send"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginEnd="15dp"
             android:padding="7dp"
             android:src="@drawable/ic_send_black"
-            android:layout_marginEnd="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtMsg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtMsg"
-            app:layout_constraintBottom_toBottomOf="@+id/txtMsg"/>
+            app:layout_constraintTop_toTopOf="@+id/txtMsg" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
