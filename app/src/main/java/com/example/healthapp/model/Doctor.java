@@ -1,63 +1,62 @@
 package com.example.healthapp.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
-import java.util.List;
 
 public class Doctor implements Serializable {
-    private int id;
-    private String firstName;
-    private String lastName;
-    private String department;
-    private String introduction;
+    private String FirstName;
+    private String LastName;
+    private String Department;
+    private String Introduction;
+    private String Gender;
+    private String Email;
 
     public Doctor() {}
 
-    public Doctor(int id, String firstName, String lastName, String department, String introduction) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.department = department;
-        this.introduction = introduction;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getFirstName() {
-        return firstName;
+        return FirstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.FirstName = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.LastName = lastName;
     }
 
     public String getDepartment() {
-        return department;
+        return Department;
     }
 
     public void setDepartment(String department) {
-        this.department = department;
+        this.Department = department;
     }
 
     public String getIntroduction() {
-        return introduction;
+        return Introduction;
     }
 
     public void setIntroduction(String introduction) {
-        this.introduction = introduction;
+        this.Introduction = introduction;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String gender) {
+        Gender = gender;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }
