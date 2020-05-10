@@ -186,7 +186,6 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
 
         switch (position) {
             case 0:
-            case 2:
             case 3:
             case 4:
             case 5:
@@ -206,8 +205,10 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, ChatActivity.class));
 //                fragment = new FixturesFragment();
                 break;
-
-
+            case 2:
+                mDrawerLayout.closeDrawer(mDrawerList);
+                startActivity(new Intent(this, DoctorListActivity.class));
+                break;
             case 8:
                 mDrawerLayout.closeDrawer(mDrawerList);
                 Intent intent = new Intent(this,

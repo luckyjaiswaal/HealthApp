@@ -11,16 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BookingActivity"></activity>
+        <activity android:name=".DoctorListActivity"></activity>
+        <activity android:name=".BookingActivity" />
         <activity
             android:name=".DoctorDetailActivity"
             android:label="@string/title_activity_doctor_detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".DoctorDashboard"></activity>
-        <activity android:name=".DashboardClean"></activity>
-        <activity android:name=".ApproveDetailView"></activity>
-        <activity android:name=".AdminDashboard"></activity>
+        <activity android:name=".SignUp" />
+        <activity android:name=".DoctorDashboard" />
+        <activity android:name=".DashboardClean" />
+        <activity android:name=".ApproveDetailView" />
+        <activity android:name=".AdminDashboard" />
         <activity android:name=".ApprovalList" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".SplashActivity" />
