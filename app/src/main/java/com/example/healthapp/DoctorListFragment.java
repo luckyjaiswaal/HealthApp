@@ -88,7 +88,6 @@ public class DoctorListFragment extends Fragment {
     void replaceFragment(Fragment fragment) {
         if (fragment != null) {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            ;
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.replace(R.id.content_frame, fragment, fragment.toString());
             fragmentTransaction.addToBackStack(fragment.toString());

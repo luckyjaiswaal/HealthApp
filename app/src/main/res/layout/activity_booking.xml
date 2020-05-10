@@ -138,8 +138,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="#4CAF50"
-                android:text="Confrim And Book"
-                android:textColor="#F6F1F1" />
+                android:text="Confirm And Book"
+                android:textColor="#F6F1F1"
+                android:id="@+id/submitBtn" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
