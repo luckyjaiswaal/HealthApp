@@ -1,10 +1,22 @@
 package com.example.healthapp.model;
 
-public class Booking {
+import java.io.Serializable;
+
+public class Booking implements Serializable {
     private Doctor doctor;
+    private String patientId;
+    private String bookingId;
     private String date;
     private int timeslot;
     private String note;
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
+    }
 
     public Doctor getDoctor() {
         return doctor;
@@ -36,5 +48,13 @@ public class Booking {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 }

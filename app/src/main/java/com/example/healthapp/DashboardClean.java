@@ -87,7 +87,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         drawerItem[3] = new DataModel(R.drawable.ic_online_black, "Online Consultation");
         drawerItem[4] = new DataModel(R.drawable.ic_subscriptions_black, "Subscription");
         drawerItem[5] = new DataModel(R.drawable.ic_contacts_black, "Contacts");
-        drawerItem[6] = new DataModel(R.drawable.ic_account_box_black, "Accounts");
+        drawerItem[6] = new DataModel(R.drawable.ic_account_box_black, "My Bookings");
         drawerItem[7] = new DataModel(R.drawable.ic_doctor_approval, "Request Approval");
         drawerItem[8] = new DataModel(R.drawable.ic_settings_black, "Settings");
         drawerItem[9] = new DataModel(R.drawable.ic_logout_black, "Logout");
@@ -188,7 +188,6 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
             case 0:
             case 3:
             case 4:
-            case 5:
             case 6: requestApproval();
             case 7:
 //                mDrawerList.setItemChecked(position, true);
@@ -208,6 +207,10 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
             case 2:
                 mDrawerLayout.closeDrawer(mDrawerList);
                 startActivity(new Intent(this, DoctorListActivity.class));
+                break;
+            case 5:
+                mDrawerLayout.closeDrawer(mDrawerList);
+                startActivity(new Intent(this, MyBookingsActivity.class));
                 break;
             case 8:
                 mDrawerLayout.closeDrawer(mDrawerList);
