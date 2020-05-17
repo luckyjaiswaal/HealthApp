@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,10 +15,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.healthapp.model.Booking;
 import com.example.healthapp.model.Doctor;
 import com.example.healthapp.model.TimeSlot;
+import com.example.healthapp.util.PopupUtil;
 import com.example.healthapp.util.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +38,7 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
     private TextView doctorName, tv_bookingDate;
     private ImageView img_back;
     private Doctor currentDoctor;
+    private Booking currentBooking;
     private DialogFragment dateDialogFragment;
     Spinner timeslots;
     DatabaseReference bookingRef;
@@ -53,7 +57,13 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
         int month = c.get(Calendar.MONTH) + 1;
         int day = c.get(Calendar.DAY_OF_MONTH);
         tv_bookingDate.setText(day + "/" + month + "/" + year);
-        currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
+        currentBooking = (Booking) getIntent().getSerializableExtra("booking");
+        if(currentBooking != null) {
+            currentDoctor = currentBooking.getDoctor();
+            tv_bookingDate.setText(currentBooking.getDate());
+        } else {
+            currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
+        }
         doctorName = findViewById(R.id.doctorName);
         timeslots = findViewById(R.id.timeslots);
         submitBtn = findViewById(R.id.submitBtn);
@@ -70,14 +80,18 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
         booking.setDate(tv_bookingDate.getText().toString());
         booking.setTimeslot(1);
         booking.setNote("Don't forget my booking.");
-
+        booking.setPatientId( FirebaseAuth.getInstance().getCurrentUser().getUid());
         bookingRef= FirebaseDatabase.getInstance().getReference().child("Bookings");
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = firebaseUser.getUid();
-        bookingRef.child(uid).setValue(booking);
+        if(currentBooking != null) {
+            booking.setBookingId(currentBooking.getBookingId());
+        } else  {
+            booking.setBookingId(bookingRef.push().getKey());
+        }
+        bookingRef.child(booking.getBookingId()).setValue(booking);
         bookingRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Toast.makeText(BookingActivity.this, "You have successfully booked.", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -103,7 +117,9 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
                 break;
             case R.id.submitBtn:
                 saveBooking();
+                Intent intent = new Intent(this, MyBookingsActivity.class);
                 finish();
+                startActivity(intent);
                 break;
         }
     }
