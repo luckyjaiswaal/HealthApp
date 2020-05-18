@@ -18,7 +18,6 @@ public class DoctorDashboard extends AppCompatActivity implements View.OnClickLi
         layoutMessages.setOnClickListener(this);
 
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

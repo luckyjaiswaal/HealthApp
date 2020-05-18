@@ -107,8 +107,8 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_chat);
         mContext = this;
         app_user_id = Myapplication.myUserId;
-
         chatSystem = getIntent().getIntExtra("chatSystem", 0);
+
         if (chatSystem == 0) {
             currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
             receiver_id = currentDoctor.getDoctorKey();

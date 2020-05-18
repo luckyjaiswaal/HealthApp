@@ -197,12 +197,9 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
 //                fragment = new ConnectFragment();
                 break;
             case 1:
-//                mDrawerList.setItemChecked(position, true);
-//                mDrawerList.setSelection(position);
-//                setTitle(mNavigationDrawerItemTitles[position]);
+//
                 mDrawerLayout.closeDrawer(mDrawerList);
                 startActivity(new Intent(this, DoctorMessageList.class));
-//                fragment = new FixturesFragment();
                 break;
             case 2:
                 mDrawerLayout.closeDrawer(mDrawerList);
