@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.healthapp.myapplication.Myapplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(getApplicationContext(),ChatActivity.class));
        // finish();
 
+        // finish();
+        txt_email.setText("jaiswal@gmail.com");///patinet
+        //txt_email.setText("mergetest1@gmail.com");// doctor
+        txt_password.setText("password");
+
+
         userTypeRef=FirebaseDatabase.getInstance().getReference().child("User");
         btn_createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                         progressDialog.dismiss();
                                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                         String ID = firebaseUser.getUid();
+                                        Myapplication.myUserId=ID;
                                         userTypeRef.child(ID).addValueEventListener(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

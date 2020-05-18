@@ -12,7 +12,8 @@ public class Myapplication extends Application {
     private static Context mContext;
     public static int selection = 0;
     public static String NEW_MESSAGE_ACTION="new_message";
-
+    public static  String myUserId="";
+    public static  String myUserType="";
     @Override
     public void onCreate() {
         super.onCreate();

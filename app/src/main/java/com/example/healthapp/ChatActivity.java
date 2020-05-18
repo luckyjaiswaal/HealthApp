@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +40,9 @@ import com.example.healthapp.chatmodel.ImageFilePath;
 import com.example.healthapp.chatmodel.Message;
 import com.example.healthapp.chatmodel.MessageList;
 import com.example.healthapp.chatmodel.User;
+import com.example.healthapp.model.Doctor;
+import com.example.healthapp.model.Patient;
+import com.example.healthapp.myapplication.Myapplication;
 import com.example.healthapp.util.Utils;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -82,8 +86,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference mDatabaseReference = null;
     private FirebaseStorage mFirebaseStorage;
     private StorageReference storageRef;
-    private String patientId = "";
-    private String doctorId = "";
     private String receiver_id = "";
     private String app_user_id = "";
     private ValueEventListener eventListener;
@@ -92,23 +94,37 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
     private String selectedImagePath = "";
     private String imageUploadFromserve = "";
     private ProgressDialog mProgressDialog;
+    private int chatSystem = 0;
+    private TextView txtName;
+    private Doctor currentDoctor;
+    private Patient mPatient;
+    private String chatRoom = "";
+    private String userName = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         mContext = this;
+        app_user_id = Myapplication.myUserId;
 
-        patientId = "8";
-        doctorId = "101";
-
-        app_user_id = patientId;
-        receiver_id = doctorId;
+        chatSystem = getIntent().getIntExtra("chatSystem", 0);
+        if (chatSystem == 0) {
+            currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
+            receiver_id = currentDoctor.getDoctorKey();
+            chatRoom = receiver_id + "_" + app_user_id;
+            userName = "Doctor: " + currentDoctor.getFirstName() + " " + currentDoctor.getLastName();
+        } else if (chatSystem == 1) {
+            mPatient = (Patient) getIntent().getSerializableExtra("patient");
+            receiver_id = mPatient.getPatientKey();
+            chatRoom = app_user_id + "_" + receiver_id;
+            userName = "Patient: " + mPatient.getFirstName() + " " + mPatient.getLastName();
+        }
         initui();
     }
 
     public void initui() {
-
+        txtName = findViewById(R.id.txtName);
         img_back = findViewById(R.id.img_back);
         img_video = findViewById(R.id.img_video);
         img_call = findViewById(R.id.img_call);
@@ -118,6 +134,7 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         img_camera = findViewById(R.id.img_camera);
         img_send = findViewById(R.id.img_send);
         txtMsg = findViewById(R.id.txtMsg);
+        txtName.setText(userName);
 
 
         Utils.changeImageViewColor(this, img_back, R.color.white);
@@ -140,7 +157,6 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         img_send.setOnClickListener(this);
 
 
-        String chatRoom = "patient" + patientId + "_" + "doctor" + doctorId;
         mDatabaseReference = FirebaseDatabase.getInstance().getReference("chatRoom").child(chatRoom);
         messagesList = (MessagesList) this.findViewById(R.id.messagesList);
         imageLoader = new ImageLoader() {

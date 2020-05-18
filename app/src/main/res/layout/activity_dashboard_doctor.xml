@@ -106,6 +106,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/layoutMessages"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 app:cardCornerRadius="12dp"

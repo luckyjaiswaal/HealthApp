@@ -201,7 +201,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
 //                mDrawerList.setSelection(position);
 //                setTitle(mNavigationDrawerItemTitles[position]);
                 mDrawerLayout.closeDrawer(mDrawerList);
-                startActivity(new Intent(this, ChatActivity.class));
+                startActivity(new Intent(this, DoctorMessageList.class));
 //                fragment = new FixturesFragment();
                 break;
             case 2:

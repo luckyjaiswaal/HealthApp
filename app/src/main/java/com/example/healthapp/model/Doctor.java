@@ -9,6 +9,15 @@ public class Doctor implements Serializable {
     private String Introduction;
     private String Gender;
     private String Email;
+    private String DoctorKey="";
+
+    public String getDoctorKey() {
+        return DoctorKey;
+    }
+
+    public void setDoctorKey(String doctorKey) {
+        DoctorKey = doctorKey;
+    }
 
     public Doctor() {}
 
