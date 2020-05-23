@@ -66,6 +66,8 @@ public class ApproveDetailView extends AppCompatActivity {
                             map.put("Email", doc_email);
                             map.put("Department","Department");
                             map.put("Introduction","Hello, Iam a Doctor");
+                            map.put("lat",dataSnapshot.child("lat").getValue());
+                            map.put("lng",dataSnapshot.child("lng").getValue());
 
                             doctorRef.child(doctorKey).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

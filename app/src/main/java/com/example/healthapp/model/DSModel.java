@@ -2,13 +2,15 @@ package com.example.healthapp.model;
 
 public class DSModel {
     int type; // 1-patient, 2-pharmacy
+    Doctor doctor;
     double lat;
     double lng;
 
-    public DSModel(int type, double lat, double lng) {
+    public DSModel(int type, double lat, double lng, Doctor doctor) {
         this.type = type;
         this.lat = lat;
         this.lng = lng;
+        this.doctor = doctor;
     }
 
     public int getType() {
@@ -33,5 +35,13 @@ public class DSModel {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }
