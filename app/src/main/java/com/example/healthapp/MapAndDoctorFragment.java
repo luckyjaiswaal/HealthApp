@@ -96,7 +96,7 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                PopupUtil.showAlertPopup(getActivity(), "Place Call", "Do you want to call?", new String[]{"Yes","Cancel"}, new PopupUtil.AlertPopup() {
+                PopupUtil.showAlertPopup(getActivity(), "Booking", "Do you want to book?", new String[]{"Yes","Cancel"}, new PopupUtil.AlertPopup() {
                     @Override
                     public void positive(DialogInterface dialog) {
                         dialog.dismiss();
@@ -130,7 +130,7 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
             if(tagModel != null){
                 if(tagModel.getType() == 1) {
                     avatar.setImageResource(R.drawable.patient);
-                    title.setText("Patient");
+                    title.setText("Doctor");
                 }
                 else {
                     avatar.setImageResource(R.drawable.pharmacy);
@@ -294,9 +294,9 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
 
     private void fillDummy() {
         models.add(new DSModel(1, -33.8476295,151.0866852));
-        models.add(new DSModel(2, -33.862709,151.0873566));
+        models.add(new DSModel(1, -33.862709,151.0873566));
         models.add(new DSModel(1, -33.8266373,151.0800934));
-        models.add(new DSModel(2, -33.8727837,151.0932617));
+        models.add(new DSModel(1, -33.8727837,151.0932617));
         models.add(new DSModel(1, -33.8316307,151.1265869));
     }
 

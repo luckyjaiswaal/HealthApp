@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         txt_email=findViewById(R.id.email);
         txt_password=findViewById(R.id.password);
         firebaseAuth=FirebaseAuth.getInstance();
-        //startActivity(new Intent(getApplicationContext(),ChatActivity.class));
-       // finish();
+        //startActivity(new Intent(getApplicationContext(),MapAndDoctorFragment.class));
+        //finish();
 
         userTypeRef=FirebaseDatabase.getInstance().getReference().child("User");
         btn_createAccount.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+
+
                                         progressDialog.dismiss();
                                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                                         String ID = firebaseUser.getUid();
@@ -83,14 +85,16 @@ public class MainActivity extends AppCompatActivity {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.exists()){
                                                     userType=dataSnapshot.child("Role").getValue().toString();
-                                                    if(userType.equals("Doctor")){
+                                                    if(userType.equals("Doctor") && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
                                                     }
-                                                    else if(userType.equals("Admin")){
+                                                    else if(userType.equals("Admin") && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(), AdminDashboard.class));
                                                     }
-                                                    else{
+                                                    else if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(),DashboardClean.class));
+                                                    } else {
+                                                        Toast.makeText(MainActivity.this, "Please verify your email address", Toast.LENGTH_LONG).show();
                                                     }
                                                 }
                                             }
