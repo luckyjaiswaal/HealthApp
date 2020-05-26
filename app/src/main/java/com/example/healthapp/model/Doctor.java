@@ -18,6 +18,8 @@ public class Doctor implements Serializable {
     public void setDoctorKey(String doctorKey) {
         DoctorKey = doctorKey;
     }
+    private double lat;
+    private double lng;
 
     public Doctor() {}
 
@@ -67,5 +69,21 @@ public class Doctor implements Serializable {
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 }

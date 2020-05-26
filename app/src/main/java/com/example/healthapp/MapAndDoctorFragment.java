@@ -2,6 +2,7 @@ package com.example.healthapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,8 +16,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.healthapp.adapter.DoctorListAdapter;
 import com.example.healthapp.adapter.RecyclerViewAdapter;
 import com.example.healthapp.model.DSModel;
+import com.example.healthapp.model.Doctor;
 import com.example.healthapp.util.PopupUtil;
 import com.example.healthapp.util.Utils;
 import com.google.android.gms.maps.CameraUpdate;
@@ -29,6 +33,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback, View.OnClickListener {
@@ -43,6 +53,7 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
     TextView pickupsTxt, actDeliveriesTxt, inactDeliveriesTxt;
     private Marker[] markers;
     private MarkerOptions[] markerOptions;
+    private DatabaseReference databaseReference;
 
     public MapAndDoctorFragment() {
     }
@@ -96,16 +107,10 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                PopupUtil.showAlertPopup(getActivity(), "Place Call", "Do you want to call?", new String[]{"Yes","Cancel"}, new PopupUtil.AlertPopup() {
-                    @Override
-                    public void positive(DialogInterface dialog) {
-                        dialog.dismiss();
-                    }
-                    @Override
-                    public void negative(DialogInterface dialog) {
-                        dialog.dismiss();
-                    }
-                });
+                DSModel tagModel = (DSModel) marker.getTag();
+                Intent intent = new Intent(getActivity(), DoctorDetailActivity.class);
+                intent.putExtra("doctor", tagModel.getDoctor());
+                startActivity(intent);
             }
         });
     }
@@ -126,7 +131,8 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
             ImageView avatar = view.findViewById(R.id.img_avatar);
             ImageView call = view.findViewById(R.id.img_call);
             TextView title = view.findViewById(R.id.txtTitle);
-            DSModel tagModel = (DSModel) marker.getTag();
+            TextView detail = view.findViewById(R.id.txtDetail);
+            final DSModel tagModel = (DSModel) marker.getTag();
             if(tagModel != null){
                 if(tagModel.getType() == 1) {
                     avatar.setImageResource(R.drawable.patient);
@@ -135,6 +141,7 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
                 else {
                     avatar.setImageResource(R.drawable.pharmacy);
                     title.setText("Pharmacy");
+                    detail.setText(tagModel.getDoctor().getFirstName() + " " + tagModel.getDoctor().getLastName());
                 }
             }
             else{
@@ -144,7 +151,9 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
             call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Utils.clickEffect(v);
+                    Intent intent = new Intent(getActivity(), DoctorDetailActivity.class);
+                    intent.putExtra("doctor", tagModel.getDoctor());
+                    startActivity(intent);
                 }
             });
 
@@ -293,11 +302,23 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
     }
 
     private void fillDummy() {
-        models.add(new DSModel(1, -33.8476295,151.0866852));
-        models.add(new DSModel(2, -33.862709,151.0873566));
-        models.add(new DSModel(1, -33.8266373,151.0800934));
-        models.add(new DSModel(2, -33.8727837,151.0932617));
-        models.add(new DSModel(1, -33.8316307,151.1265869));
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Doctors");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Doctor doc = snapshot.getValue(Doctor.class);
+                    if(doc.getLat() != 0d || doc.getLng() != 0d) {
+                        models.add(new DSModel(2, doc.getLat(),doc.getLng(), doc));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

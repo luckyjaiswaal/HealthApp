@@ -13,14 +13,22 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class SignUp extends AppCompatActivity {
@@ -33,10 +41,12 @@ public class SignUp extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     ProgressDialog progressDialog;
-
+    LatLng position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Places.initialize(getApplicationContext(), "AIzaSyAa06d1FSR-i-xO2utysXI4umPMmq5zo0c");
+        PlacesClient placesClient = Places.createClient(this);
         setContentView(R.layout.activity_sign_up);
 
         txt_firstName = findViewById(R.id.firstName);
@@ -49,7 +59,24 @@ public class SignUp extends AppCompatActivity {
         radioMale = findViewById(R.id.rdMaleBtn);
         radioFemale = findViewById(R.id.rdFemaleBtn);
         firebaseAuth=FirebaseAuth.getInstance();
+        // Initialize the AutocompleteSupportFragment.
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
 
+// Specify the types of place data to return.
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
+
+// Set up a PlaceSelectionListener to handle the response.
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                position =place.getLatLng();
+            }
+
+            @Override
+            public void onError(Status status) {
+            }
+        });
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +133,8 @@ public class SignUp extends AppCompatActivity {
                                 map.put("Gender", gender);
                                 map.put("Role", role);
                                 map.put("Email", email);
+                                map.put("lat", position.latitude);
+                                map.put("lng", position.longitude);
 
                                 databaseReference.setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

@@ -71,7 +71,6 @@ public class DoctorListFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), DoctorDetailActivity.class);
                             intent.putExtra("doctor", selectedItem);
                             startActivity(intent);
-                            System.out.println(models.get(position).getFirstName());
                         }
                     });
                 }
