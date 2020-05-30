@@ -185,10 +185,12 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         Fragment fragment = null;
 
         switch (position) {
-            case 0:
-            case 3:
-            case 4:
+           // case 0:
+           // case 3:
+            //case 4:
             case 6: requestApproval();
+                    mDrawerLayout.closeDrawer(mDrawerList);
+                    break;
             case 7:
 //                mDrawerList.setItemChecked(position, true);
 //                mDrawerList.setSelection(position);
