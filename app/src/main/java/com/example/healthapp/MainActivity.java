@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         //finish();
 
         // finish();
-        txt_email.setText("jaiswal@gmail.com");///patinet
+        //txt_email.setText("jaiswal@gmail.com");///patinet
         //txt_email.setText("mergetest1@gmail.com");// doctor
-        txt_password.setText("password");
+        //txt_password.setText("password");
 
 
         userTypeRef=FirebaseDatabase.getInstance().getReference().child("User");
@@ -102,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
                                                     else if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(),DashboardClean.class));
                                                     } else {
-                                                        startActivity(new Intent(getApplicationContext(),DashboardClean.class));
+                                                        //startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
+
+                                                        //startActivity(new Intent(getApplicationContext(),DashboardClean.class));
 
                                                         Toast.makeText(MainActivity.this, "Please verify your email address", Toast.LENGTH_LONG).show();
                                                     }
