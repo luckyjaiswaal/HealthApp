@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -112,11 +113,19 @@ public class ChatActivity extends AppCompatActivity implements View.OnClickListe
         if (chatSystem == 0) {
             currentDoctor = (Doctor) getIntent().getSerializableExtra("doctor");
             receiver_id = currentDoctor.getDoctorKey();
+            if(receiver_id==null ||receiver_id.equalsIgnoreCase("")){
+                Toast.makeText(mContext,"Don't get correct doctor informaiton",Toast.LENGTH_LONG).show();
+                finish();
+            }
             chatRoom = receiver_id + "_" + app_user_id;
             userName = "Doctor: " + currentDoctor.getFirstName() + " " + currentDoctor.getLastName();
         } else if (chatSystem == 1) {
             mPatient = (Patient) getIntent().getSerializableExtra("patient");
             receiver_id = mPatient.getPatientKey();
+            if(receiver_id==null ||receiver_id.equalsIgnoreCase("")){
+                Toast.makeText(mContext,"Don't get correct patient informaiton",Toast.LENGTH_LONG).show();
+                finish();
+            }
             chatRoom = app_user_id + "_" + receiver_id;
             userName = "Patient: " + mPatient.getFirstName() + " " + mPatient.getLastName();
         }
