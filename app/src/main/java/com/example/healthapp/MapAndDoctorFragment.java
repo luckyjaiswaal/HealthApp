@@ -114,11 +114,11 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
                 PopupUtil.showAlertPopup(getActivity(), "Booking", "Do you want to book?", new String[]{"Yes","Cancel"}, new PopupUtil.AlertPopup() {
                     @Override
                     public void positive(DialogInterface dialog) {
-                        dialog.dismiss();
+                        //dialog.dismiss();
                     }
                     @Override
                     public void negative(DialogInterface dialog) {
-                        dialog.dismiss();
+                        //dialog.dismiss();
                     }
                 });
             }
@@ -149,8 +149,8 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
                     title.setText("Doctor");
                 }
                 else {
-                    avatar.setImageResource(R.drawable.pharmacy);
-                    title.setText("Pharmacy");
+                    avatar.setImageResource(R.drawable.patient);
+                    title.setText("Doctor");
                     detail.setText(tagModel.getDoctor().getFirstName() + " " + tagModel.getDoctor().getLastName());
                 }
             }

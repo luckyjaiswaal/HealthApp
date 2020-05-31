@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000"
+    android:background="@drawable/grad_bg"
     android:padding="30dp"
     tools:context=".SignUp">
 
@@ -21,16 +21,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="@color/orange"
+        android:textColorHint="@color/white"
         android:layout_marginTop="25dp"
         >
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/white"
+            android:drawableEnd="@drawable/ic_email"
+            android:drawablePadding="10dp"
             android:hint="Email"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="text"
             android:textSize="20dp"
@@ -40,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="@color/orange"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -48,8 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:drawableEnd="@drawable/ic_lock_outline"
+            android:backgroundTint="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="20dp"
