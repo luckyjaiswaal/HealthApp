@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.healthapp.model.Booking;
 import com.example.healthapp.model.Doctor;
+import com.example.healthapp.model.Patient;
 import com.example.healthapp.model.TimeSlot;
 import com.example.healthapp.util.PopupUtil;
 import com.example.healthapp.util.Utils;
@@ -42,6 +43,7 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
     private DialogFragment dateDialogFragment;
     Spinner timeslots;
     DatabaseReference bookingRef;
+    DatabaseReference userRef;
     private Button submitBtn;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -75,30 +77,48 @@ public class BookingActivity extends AppCompatActivity  implements View.OnClickL
     }
 
     private void saveBooking() {
-        Booking booking = new Booking();
-        booking.setDoctor(currentDoctor);
-        booking.setDate(tv_bookingDate.getText().toString());
-        booking.setTimeslot(1);
-        booking.setNote("Don't forget my booking.");
-        booking.setPatientId( FirebaseAuth.getInstance().getCurrentUser().getUid());
-        bookingRef= FirebaseDatabase.getInstance().getReference().child("Bookings");
-        if(currentBooking != null) {
-            booking.setBookingId(currentBooking.getBookingId());
-        } else  {
-            booking.setBookingId(bookingRef.push().getKey());
-        }
-        bookingRef.child(booking.getBookingId()).setValue(booking);
-        bookingRef.addValueEventListener(new ValueEventListener() {
+        userRef= FirebaseDatabase.getInstance().getReference().child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(BookingActivity.this, "You have successfully booked.", Toast.LENGTH_LONG).show();
-            }
+                Booking booking = new Booking();
+                booking.setDoctor(currentDoctor);
+                booking.setDoctorId(currentDoctor.getDoctorId());
+                booking.setDate(tv_bookingDate.getText().toString());
+                booking.setTimeslot(1);
+                booking.setNote("Don't forget my booking.");
+                Patient patient = new Patient();
+                patient.setFirstName(dataSnapshot.child("First Name").getValue().toString());
+                patient.setLastName(dataSnapshot.child("Last Name").getValue().toString());
+                patient.setEmail(dataSnapshot.child("Email").getValue().toString());
+                booking.setPatientId( FirebaseAuth.getInstance().getCurrentUser().getUid());
+                booking.setPatient(patient);
+                bookingRef= FirebaseDatabase.getInstance().getReference().child("Bookings");
+                if(currentBooking != null) {
+                    booking.setBookingId(currentBooking.getBookingId());
+                } else  {
+                    booking.setBookingId(bookingRef.push().getKey());
+                }
+                bookingRef.child(booking.getBookingId()).setValue(booking);
+                bookingRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Toast.makeText(BookingActivity.this, "You have successfully booked.", Toast.LENGTH_LONG).show();
+                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
 
     }
 

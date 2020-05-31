@@ -4,7 +4,9 @@ import java.io.Serializable;
 
 public class Booking implements Serializable {
     private Doctor doctor;
+    private Patient patient;
     private String patientId;
+    private String doctorId;
     private String bookingId;
     private String date;
     private int timeslot;
@@ -56,5 +58,21 @@ public class Booking implements Serializable {
 
     public void setPatientId(String patientId) {
         this.patientId = patientId;
+    }
+
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 }

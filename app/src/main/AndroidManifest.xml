@@ -17,21 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-
-        <activity android:name=".SignUp"></activity>
-        <activity android:name=".DoctorDashboard"></activity>
-        <activity android:name=".DashboardClean"></activity>
-        <activity android:name=".ApproveDetailView"></activity>
-        <activity android:name=".AdminDashboard"></activity>
-        <activity android:name=".ApprovalList"></activity>
-        <activity android:name=".BookingActivity"></activity>
-        <activity android:name=".MyBookingsActivity"></activity>
-        <activity android:name=".DoctorDetailActivity"></activity>
-        <activity android:name=".DoctorListActivity"></activity>
-        <activity android:name=".DoctorMessageList"></activity>
-        <activity android:name=".PatientMessageList"></activity>
-
+        <activity android:name=".SignUp" />
+        <activity android:name=".DoctorDashboard" />
+        <activity android:name=".DashboardClean" />
+        <activity android:name=".ApproveDetailView" />
+        <activity android:name=".AdminDashboard" />
+        <activity android:name=".ApprovalList" />
+        <activity android:name=".BookingActivity" />
+        <activity android:name=".MyBookingsActivity" />
+        <activity android:name=".DoctorDetailActivity" />
+        <activity android:name=".DoctorListActivity" />
+        <activity android:name=".DoctorMessageList" />
+        <activity android:name=".PatientMessageList" />
         <activity android:name=".ChatActivity" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".MainDashboard" />

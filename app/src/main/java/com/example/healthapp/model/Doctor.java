@@ -10,6 +10,7 @@ public class Doctor implements Serializable {
     private String Gender;
     private String Email;
     private String DoctorKey="";
+    private String DoctorId;
 
     public String getDoctorKey() {
         return DoctorKey;
@@ -85,5 +86,13 @@ public class Doctor implements Serializable {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public String getDoctorId() {
+        return DoctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        DoctorId = doctorId;
     }
 }

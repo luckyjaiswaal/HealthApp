@@ -6,7 +6,7 @@ public class Patient implements Serializable {
     private String Email = "";
     private String FirstName = "";
     private String LastName = "";
-    private String Role = "";
+    private String Role = "Patient";
     private String PatientKey="";
 
     public String getEmail() {
