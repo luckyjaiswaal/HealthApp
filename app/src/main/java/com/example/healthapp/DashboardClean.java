@@ -54,6 +54,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userRef,doctorApprovalRef;
     DataSnapshot dataSnapshot;
+    private String patientFullName ="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 fname=dataSnapshot.child("First Name").getValue().toString();
                 lname=dataSnapshot.child("Last Name").getValue().toString();
+                patientFullName=fname+" "+lname;
             }
 
             @Override
@@ -93,7 +95,7 @@ public class DashboardClean extends AppCompatActivity implements View.OnClickLis
         drawerItem[9] = new DataModel(R.drawable.ic_logout_black, "Logout");
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setHomeButtonEnabled(true);
-        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, drawerItem);
+        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, drawerItem,patientFullName);
         mDrawerList.setAdapter(adapter);
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);

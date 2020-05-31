@@ -14,6 +14,8 @@ public class Myapplication extends Application {
     public static String NEW_MESSAGE_ACTION="new_message";
     public static  String myUserId="";
     public static  String myUserType="";
+    public static  String myUserFullname="";
+
     @Override
     public void onCreate() {
         super.onCreate();

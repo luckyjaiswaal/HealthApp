@@ -12,18 +12,21 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.healthapp.R;
+import com.example.healthapp.myapplication.Myapplication;
 import com.example.healthapp.util.Utils;
 
 public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
     Context mContext;
     int layoutResourceId;
     DataModel data[] = null;
+    private String patientFullName;
 
-    public DrawerItemCustomAdapter(Context mContext, int layoutResourceId, DataModel[] data) {
+    public DrawerItemCustomAdapter(Context mContext, int layoutResourceId, DataModel[] data,String _patientFullName) {
         super(mContext, layoutResourceId, data);
         this.layoutResourceId = layoutResourceId;
         this.mContext = mContext;
         this.data = data;
+        this.patientFullName=_patientFullName;
     }
 
     @Override
@@ -34,6 +37,9 @@ public class DrawerItemCustomAdapter extends ArrayAdapter<DataModel> {
         ConstraintLayout layoutHeader = (ConstraintLayout) listItem.findViewById(R.id.layoutHeader);
         ImageView imageViewIcon = (ImageView) listItem.findViewById(R.id.imageViewIcon);
         TextView textViewName = (TextView) listItem.findViewById(R.id.textViewName);
+        TextView tvpatientFullName = (TextView) listItem.findViewById(R.id.tvpatientFullName);
+        tvpatientFullName.setText(Myapplication.myUserFullname);
+
         if (position == 0){
             layoutHeader.setVisibility(View.VISIBLE);
             ImageView imgLogo = (ImageView) listItem.findViewById(R.id.img_logo);

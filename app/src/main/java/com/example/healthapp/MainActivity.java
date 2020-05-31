@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         //finish();
 
         // finish();
-        //txt_email.setText("jaiswal@gmail.com");///patinet
+        txt_email.setText("jaiswal@gmail.com");///patinet
         //txt_email.setText("mergetest1@gmail.com");// doctor
-        //txt_password.setText("password");
+        txt_password.setText("password");
 
 
         userTypeRef=FirebaseDatabase.getInstance().getReference().child("User");
@@ -93,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.exists()){
                                                     userType=dataSnapshot.child("Role").getValue().toString();
+                                                    String FirstName = dataSnapshot.child("First Name").getValue().toString();
+                                                    String LastName = dataSnapshot.child("Last Name").getValue().toString();
+                                                    Myapplication.myUserFullname = FirstName+" "+ LastName;
+
                                                     if(userType.equals("Doctor") && firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
                                                     }
@@ -102,9 +106,8 @@ public class MainActivity extends AppCompatActivity {
                                                     else if(firebaseAuth.getCurrentUser().isEmailVerified()){
                                                         startActivity(new Intent(getApplicationContext(),DashboardClean.class));
                                                     } else {
-                                                        //startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
-
-                                                        //startActivity(new Intent(getApplicationContext(),DashboardClean.class));
+                                                      //  startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
+                                                        startActivity(new Intent(getApplicationContext(),DashboardClean.class));
 
                                                         Toast.makeText(MainActivity.this, "Please verify your email address", Toast.LENGTH_LONG).show();
                                                     }
