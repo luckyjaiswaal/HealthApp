@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                 if(dataSnapshot.exists()){
                                                     userType=dataSnapshot.child("Role").getValue().toString();
-                                                    if(userType.equals("Doctor") && firebaseAuth.getCurrentUser().isEmailVerified()){
+                                                    if(userType.equals("Doctor")){
                                                         startActivity(new Intent(getApplicationContext(), DoctorDashboard.class));
                                                     }
                                                     else if(userType.equals("Admin") && firebaseAuth.getCurrentUser().isEmailVerified()){

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#000000"
+    android:background="@drawable/grad_bg"
     android:padding="30dp"
     tools:context=".SignUp">
 
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
-            android:backgroundTint="@color/orange"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="text"
             android:textSize="20dp"
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -40,8 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name"
-            android:backgroundTint="@color/orange"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="text"
             android:textSize="20dp"
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -59,8 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:backgroundTint="@color/orange"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="text"
             android:textSize="20dp"
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -78,8 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:backgroundTint="@color/orange"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="20dp"
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
-        android:textColorHint="#FF4500"
+        android:textColorHint="@color/white"
         android:layout_marginTop="5dp"
         >
         <EditText
@@ -97,8 +97,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
-            android:backgroundTint="@color/orange"
-            android:textColor="#FFFFFF"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="20dp"
@@ -113,9 +113,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
-            android:textColor="@color/orange"
-            android:text="Gender"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
+            android:text="Gender:"
             android:textSize="20sp"
             />
         <RadioButton
@@ -125,18 +125,18 @@
             android:text="Male"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
-            android:backgroundTint="@color/orange"
-            android:buttonTint="@color/orange"
-            android:textColor="@color/orange"
+            android:backgroundTint="@color/white"
+            android:buttonTint="@color/black"
+            android:textColor="@color/white"
             />
         <RadioButton
             android:id="@+id/rdFemaleBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
-            android:backgroundTint="@color/orange"
-            android:buttonTint="@color/orange"
-            android:textColor="@color/orange"
+            android:backgroundTint="@color/white"
+            android:buttonTint="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             />
@@ -147,8 +147,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
-            android:textColor="@color/orange"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black"
             android:text="Location"
             android:textSize="20sp"
             android:layout_marginRight="10dp"
