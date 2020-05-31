@@ -58,6 +58,8 @@ public class DoctorListFragment extends Fragment {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Doctor doc = snapshot.getValue(Doctor.class);
                     doc.setDoctorId(snapshot.getKey());
+                    doc.setDoctorKey( snapshot.getKey());
+
                     System.out.println("Modles:" + models.size() + doc.getFirstName());
                     models.add(doc);
                     mAdapter = new DoctorListAdapter(getActivity(), models);

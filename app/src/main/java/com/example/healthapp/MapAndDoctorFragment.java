@@ -318,6 +318,8 @@ public class MapAndDoctorFragment extends Fragment implements OnMapReadyCallback
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     Doctor doc = snapshot.getValue(Doctor.class);
+                    doc.setDoctorKey( snapshot.getKey());
+
                     if(doc.getLat() != 0d || doc.getLng() != 0d) {
                         models.add(new DSModel(2, doc.getLat(),doc.getLng(), doc));
                     }

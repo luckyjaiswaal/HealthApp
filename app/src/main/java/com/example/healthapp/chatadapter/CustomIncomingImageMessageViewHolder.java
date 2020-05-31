@@ -38,9 +38,7 @@ public class CustomIncomingImageMessageViewHolder
                 //mSingleuserchatActivity.showFullImage(message.getImageUrl());
             }
         });
-        newmessageText.setText(message.getText());
-        if (message.getText().toString().trim().equalsIgnoreCase("")) {
-            newmessageText.setVisibility(View.GONE);
-        }
+        newmessageText.setVisibility(View.GONE);
+
     }
 }
